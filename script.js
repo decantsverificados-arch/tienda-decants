@@ -5,7 +5,7 @@
    CONFIGURACIÓN DE TADESHOP
 ================================= */
 
-const TELEFONO = "527225553562";
+const TELEFONO = "7221810317";
 
 const PRECIO_ORIGINAL = 130;
 const DESCUENTO = 30;
@@ -16,6 +16,9 @@ const PRECIO_FINAL = Math.round(
 
 /* =================================
    COLECCIÓN DE PERFUMES
+
+   CAMBIA MANUALMENTE LAS CANTIDADES
+   0 = AGOTADO
 ================================= */
 
 const perfumes = [
@@ -24,56 +27,56 @@ const perfumes = [
     marca: "Armaf",
     nombre: "Odyssey Homme Eau de Parfum",
     imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlTmOIfjTdSMgvbbhQQBO4nzAKXx_YHSgtUpPmUaKsLAkvSLyZgQWXuHc&s=10",
-    disponible: true
+    disponibles: 15
   },
 
   {
     marca: "Rasasi",
     nombre: "Hawas Tropical",
     imagen: "https://fragarabic.com/cdn/shop/files/hawas-tropical-rasasi-06-creativa.webp?v=1793400050&width=2048",
-    disponible: true
+    disponibles: 0
   },
 
   {
     marca: "Afnan",
     nombre: "9PM",
     imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW3RZnfciMy4bUoJthXlBzZ0oXdEFSHDfkuP6bTSr-yJy1yB1ZXQWKamki&s=10",
-    disponible: true
+    disponibles: 15
   },
 
   {
     marca: "Armaf",
     nombre: "Odyssey Aqua",
     imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0AV_PPaiyCGoYGRToqDeoFBqGFvFLsdWEIT3zrDNtoK7x2DtRdDT3hAxt&s=10",
-    disponible: true
+    disponibles: 0
   },
 
   {
     marca: "Lattafa",
     nombre: "Eclaire Lattafa",
     imagen: "https://aspik.mx/cdn/shop/files/lat-4298-eclaire-6.jpg?v=1791793938",
-    disponible: true
+    disponibles: 13
   },
 
   {
     marca: "Armaf",
-    nombre: "Odyssey Mango",
-    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScjDqp88b0FI1h3PJP46afVjxD13WpOI3BwuyqOsig3GaI0ItXpdqQpufO&s=10",
-    disponible: false
+    nombre: "Armaf Club de Nuit Intense Man",
+    imagen: "https://azaharlenceria.com/files/product_images/2026/07/20/CDN%20INTENSE-1.png",
+    disponibles: 0
   },
 
   {
-    marca: "Rabanne",
-    nombre: "1 Million",
-    imagen: "https://medias.rabanne.com/cdn-cgi/image/width=700,quality=90,format=auto/https://medias.rabanne.com/medias/sys_master/images/h4b/hb6/11035934162974/11035934097438/11035934097438.png",
-    disponible: false
+    marca: "Lattafa",
+    nombre: "Lattafa Rave Pink Women",
+    imagen: "https://static2.sabinacdn.com/154414/lattafa-rave-now-for-women-eau-de-parfum.jpg",
+    disponibles: 0
   },
 
   {
-    marca: "Jean Paul Gaultier",
-    nombre: "Le Male Elixir",
-    imagen: "https://sp701.liverpool.com.mx/i/1138944090_4p.jpg",
-    disponible: false
+    marca: "Rasasi",
+    nombre: "hawas malibu",
+    imagen: "https://m.media-amazon.com/images/I/717l45UEDqL.jpg",
+    disponibles: 0
   }
 
 ];
@@ -190,11 +193,13 @@ function crearTarjeta(perfume) {
 
   tarjeta.append(foto, info);
 
-  /* CONTROL DE DISPONIBILIDAD */
+  /* =================================
+     CONTROL DE DISPONIBILIDAD
+  ================================= */
 
-  if (perfume.disponible) {
+  if (perfume.disponibles > 0) {
 
-    stock.textContent = "Disponible";
+    stock.textContent = `Disponibles: ${perfume.disponibles}`;
     stock.classList.add("disponible");
 
     compra.href = crearEnlace(perfume.nombre);
